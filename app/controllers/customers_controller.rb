@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
         customer_search_term.where_args).
         order(customer_search_term.order).page(params[:page])
     else
-      @customers = []
+      @customers = Customer.all.page(params[:page]).order(:last_name)
     end
   end
 end
