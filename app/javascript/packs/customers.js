@@ -55,7 +55,7 @@ var CustomerSearchComponent = Component({
   search: function($event) {
     var self = this;
     self.keywords = $event;
-    if (self.keywords.length < 3) {
+    if (self.keywords.length < 2) {
       return;
     }
     self.http.get(

@@ -16,17 +16,24 @@ private
 
 
   def build_for_name_search(search_term)
+    search_array = search_term.split(' ')
     @where_clause << case_insensitive_search(:first_name)
-    @where_args[:first_name] = starts_with(search_term)
+    @where_args[:first_name] = starts_with(search_array[0])
+    if search_array.length == 1
+      @where_clause << " OR #{case_insensitive_search(:last_name)}"
+      @where_args[:last_name] = starts_with(search_array[0])
 
-    @where_clause << " OR #{case_insensitive_search(:last_name)}"
-    @where_args[:last_name] = starts_with(search_term)
+    elsif search_term.split(' ').length == 2
+      @where_clause << " AND #{case_insensitive_search(:last_name)}"
+      @where_args[:last_name] = starts_with(search_array[1])
+
+    end
 
     @order = "last_name asc"
   end
 
-  def starts_with(search_term)
-    search_term + "%"
+  def starts_with(search_token)
+    search_token + "%"
   end
 
   def case_insensitive_search(field_name)
