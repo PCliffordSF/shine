@@ -25,7 +25,7 @@ private
     if num_terms == 1
       @where_clause << " OR #{case_insensitive_search(:last_name)}"
       @where_args[:last_name] = starts_with(search_term)
-    elsif num_terms >= 2
+    elsif num_terms == 2
       last_name = search_array.shift
       @where_clause << " AND #{case_insensitive_search(:last_name)}"
       @where_args[:last_name] = starts_with(last_name)
