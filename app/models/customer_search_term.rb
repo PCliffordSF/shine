@@ -30,7 +30,7 @@ private
       @where_clause << " AND #{case_insensitive_search(:last_name)}"
       @where_args[:last_name] = starts_with(last_name)
     end
-    
+
     @order = "last_name asc"
   end
 
