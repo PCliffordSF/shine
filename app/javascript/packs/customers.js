@@ -17,6 +17,15 @@ import { RouterModule           } from "@angular/router";
 
 import { CustomerSearchComponent  } from "CustomerSearchComponent";
 import { CustomerDetailsComponent } from "CustomerDetailsComponent";
+import { CustomerInfoComponent    } from
+  "CustomerDetailsComponent/CustomerInfoComponent";
+import { AddressComponent    } from
+  "CustomerDetailsComponent/AddressComponent";
+import { CreditCardComponent    } from
+  "CustomerDetailsComponent/CreditCardComponent";
+
+
+// code as before...
 
 var AppComponent = Component({
   selector: "shine-customers-app",
@@ -26,7 +35,6 @@ var AppComponent = Component({
     function() {}
   ]
 });
-
 
 var RESULTS = [
   {
@@ -88,9 +96,12 @@ var CustomerAppModule = NgModule({
   declarations: [
     CustomerSearchComponent,
     CustomerDetailsComponent,
+    CustomerInfoComponent,
+    AddressComponent,
+    CreditCardComponent,
     AppComponent
-   ],
-  bootstrap:    [ AppComponent ]
+  ],
+  bootstrap: [ AppComponent ]
 })
 .Class({
   constructor: function() {}
